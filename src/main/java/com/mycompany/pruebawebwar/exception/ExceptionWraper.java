@@ -13,7 +13,7 @@ import java.util.Date;
  * @author acer
  */
 public class ExceptionWraper implements Serializable {
-    private String codigo;
+    private Integer codigo;
     private String error;
     private String fecha;
     private String mensaje;
@@ -22,7 +22,7 @@ public class ExceptionWraper implements Serializable {
     public ExceptionWraper() {
     }
     
-    public ExceptionWraper(String codigo, String error, String mensaje, String url) {
+    public ExceptionWraper(Integer codigo, String error, String mensaje, String url) {
         this.codigo = codigo;
         this.error = error;
         this.fecha = new Date().toString();
@@ -30,11 +30,11 @@ public class ExceptionWraper implements Serializable {
         this.url = url;
     }
 
-    public String getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
