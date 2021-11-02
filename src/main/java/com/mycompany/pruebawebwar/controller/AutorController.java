@@ -8,6 +8,7 @@ package com.mycompany.pruebawebwar.controller;
 import co.edu.unicundi.pruebaejbjar.entity.Alumno;
 import co.edu.unicundi.pruebaejbjar.entity.Autor;
 import co.edu.unicundi.pruebaejbjar.service.IAutorService;
+import co.edu.unicundi.pruebaejbjar.view.VistaAutorLibro;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -46,5 +47,13 @@ public class AutorController {
     public Response obtener() {
         List<Autor> listaAlumno = service.listar();
         return Response.status(Response.Status.OK).entity(listaAlumno).build();
+    }
+    
+    @GET
+    @Path("/obtenerDatosAutor")
+    @Produces(MediaType.APPLICATION_JSON) //Que se va a retornar
+    public Response obtenerDatos() {
+        List<VistaAutorLibro> lista = service.obtener();
+        return Response.status(Response.Status.OK).entity(lista).build();
     }
 }
