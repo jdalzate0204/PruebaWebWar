@@ -1,15 +1,13 @@
 package com.mycompany.pruebawebwar.controller;
 
 import co.edu.unicundi.pruebaejbjar.dto.AutorDto;
-import co.edu.unicundi.pruebaejbjar.entity.Alumno;
 import co.edu.unicundi.pruebaejbjar.entity.Autor;
-import co.edu.unicundi.pruebaejbjar.exception.BussinessException;
 import co.edu.unicundi.pruebaejbjar.exception.ResourceNotFoundException;
 import co.edu.unicundi.pruebaejbjar.service.IAutorService;
 import co.edu.unicundi.pruebaejbjar.view.VistaAutorLibro;
 import java.util.List;
-import javax.ejb.*;
 import javax.ws.rs.*;
+import javax.ejb.*;
 import javax.ws.rs.core.*;
 
 /**
@@ -26,8 +24,8 @@ public class AutorController {
     
     @POST
     @Path("/guardar")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response insertar(Autor autor){
+    @Consumes(MediaType.APPLICATION_JSON) //Enviar la información en JSON
+    public Response insertar(Autor autor) throws CloneNotSupportedException{
         this.service.guardar(autor);
         return Response.status(Response.Status.CREATED).build();
     }

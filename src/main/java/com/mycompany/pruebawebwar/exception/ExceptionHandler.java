@@ -28,7 +28,25 @@ public class ExceptionHandler implements ExceptionMapper<Exception>{
         } else if (ex instanceof ResourceNotFoundException) {
             ew = new ExceptionWraper(Response.Status.NOT_FOUND.getStatusCode(), Response.Status.NOT_FOUND.getReasonPhrase(), ex.getMessage(), uriInfo.getPath());
             return Response.status(Response.Status.NOT_FOUND).entity(ew).build();
-        } else {
+        }else if (ex instanceof CloneNotSupportedException) { //409
+            ew = new ExceptionWraper(Response.Status.CONFLICT.getStatusCode(), 
+                                      Response.Status.CONFLICT.getReasonPhrase(), 
+                                      ex.getMessage(), 
+                                      uriInfo.getPath());
+            return Response.status(Response.Status.CONFLICT).entity(ew).build();
+        }else if (ex instanceof CloneNotSupportedException) { //409
+            ew = new ExceptionWraper(Response.Status.CONFLICT.getStatusCode(), 
+                                      Response.Status.CONFLICT.getReasonPhrase(), 
+                                      ex.getMessage(), 
+                                      uriInfo.getPath());
+            return Response.status(Response.Status.CONFLICT).entity(ew).build();
+        }else if (ex instanceof CloneNotSupportedException) { //409
+            ew = new ExceptionWraper(Response.Status.CONFLICT.getStatusCode(), 
+                                      Response.Status.CONFLICT.getReasonPhrase(), 
+                                      ex.getMessage(), 
+                                      uriInfo.getPath());
+            return Response.status(Response.Status.CONFLICT).entity(ew).build();
+        }else {
             ew = new ExceptionWraper(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), Response.Status.INTERNAL_SERVER_ERROR.getReasonPhrase(), "", uriInfo.getPath());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(ew).build();
         }
