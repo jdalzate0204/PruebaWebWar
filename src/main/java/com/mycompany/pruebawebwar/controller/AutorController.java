@@ -73,7 +73,7 @@ public class AutorController {
     @PUT
     @Path("/editar")
     @Consumes(MediaType.APPLICATION_JSON) //Enviar la información en JSON
-    public Response editar(Autor autor) {
+    public Response editar(Autor autor) throws CloneNotSupportedException{
         this.service.editar(autor);
         return Response.status(Response.Status.OK).build();
     }
