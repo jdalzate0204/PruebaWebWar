@@ -58,7 +58,7 @@ public class AutorController {
     @Path("/obtener/{id}")
     @Produces(MediaType.APPLICATION_JSON) //Que se va a retornar
     public Response obtenerPorId(@PathParam("id") Integer id) throws ResourceNotFoundException {
-        Autor autor = service.listarPorId(id);
+        List<Autor> autor = service.listarId(id);
         return Response.status(Response.Status.OK).entity(autor).build();
     }
     
